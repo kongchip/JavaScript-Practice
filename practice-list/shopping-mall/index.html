@@ -27,18 +27,18 @@
     ></script>
     <title>sidebar(bootstrap)</title>
   </head>
-  <body>
+  <body class="dark">
     <div class="black-bg">
       <div class="white-bg">
         <h4>로그인하세요</h4>
         <form action="success.html">
           <div class="my-3">
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" id="email" />
           </div>
           <div class="my-3">
-            <input type="password" class="form-control" />
+            <input type="password" class="form-control" id="pwd" />
           </div>
-          <button type="submit" class="btn btn-primary">전송</button>
+          <button type="submit" class="btn btn-primary" id="send">전송</button>
           <button type="button" class="btn btn-danger" id="close">닫기</button>
         </form>
       </div>
@@ -47,6 +47,7 @@
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <span class="navbar-brand">Navbar</span>
+        <span class="badge bg-dark">Dark 🔄</span>
         <button class="navbar-toggler" type="button">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -62,6 +63,7 @@
     </ul>
 
     <div class="main-bg">
+      <h4>Shirts on Sale</h4>
       <button class="btn btn-danger" id="login">로그인</button>
     </div>
   </body>
