@@ -33,14 +33,19 @@ $('#close').on('click', closeBtn);
 function loginAlert(e) {
   let idCheck = document.getElementById('email').value;
   let pwdCheck = document.getElementById('pwd').value;
+  // console.log(addEventListener(idCheck));
   if (idCheck === '' && pwdCheck === '') {
     alert('아이디 혹은 비밀번호를 입력해 주세요');
-  } else if (idCheck === '') {
-    alert('아이디를 입력해주세요');
-  } else if (pwdCheck === '') {
-    alert('비밀번호를 입력해주세요');
-  } else if (pwdCheck.length < 6) {
+    e.preventDefault();
+  } else if (pwdCheck.length <= 6) {
     alert('비밀번호의 길이가 너무 짧습니다.\n(6글자 이상으로 입력해주세요)');
+    e.preventDefault();
+  } else if (/\S+@\S+.\S+/.test(idCheck) === false) {
+    alert('아이디가 이메일 형식이 아닙니다.');
+    e.preventDefault();
+  } else if (!/[A-Z]/.test(pwdCheck)) {
+    alert('비밀번호에 대문자 영어가 포함되어야합니다');
+    e.preventDefault();
   }
 }
 
