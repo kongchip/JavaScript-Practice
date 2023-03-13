@@ -58,5 +58,14 @@ function change() {
   }
 }
 $('.badge').on('click', change);
-// badge 클릭횟수가 홀수면 내부 글자를 Light로 변경
-// badge 클릭횟수가 짝수면 내부 글자를 Dark로 변경
+
+let numCount = 5;
+function ad() {
+  numCount -= 1;
+  if (numCount >= 0) {
+    $('#num').html(numCount);
+  } else {
+    $('.alert').remove();
+  }
+}
+setInterval(ad, 1000);
