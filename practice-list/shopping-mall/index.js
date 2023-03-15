@@ -74,3 +74,39 @@ function ad() {
   }
 }
 setInterval(ad, 1000);
+
+//img-slide
+let imgId = 1;
+function slideImg(e) {
+  let imgId = document.getElementById(e.getAttribute('id')).getAttribute('id');
+  if (imgId === 'slide-img1') {
+    document.querySelector('.slide-container').style.transform =
+      'translateX(0vw)';
+    imgId = 1;
+  } else if (imgId === 'slide-img2') {
+    document.querySelector('.slide-container').style.transform =
+      'translateX(-100vw)';
+    imgId = 2;
+  } else if (imgId === 'slide-img3') {
+    document.querySelector('.slide-container').style.transform =
+      'translateX(-200vw)';
+    imgId = 3;
+  }
+}
+
+function nextImg() {
+  if (imgId === 1) {
+    document.querySelector('.slide-container').style.transform =
+      'translateX(-100vw)';
+    imgId = 2;
+  } else if (imgId === 2) {
+    document.querySelector('.slide-container').style.transform =
+      'translateX(-200vw)';
+    imgId = 3;
+  } else if (imgId === 3) {
+    document.querySelector('.slide-container').style.transform =
+      'translateX(0vw)';
+    imgId = 1;
+  }
+}
+document.getElementById('next').onclick = nextImg;
