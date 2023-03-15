@@ -19,17 +19,35 @@
       crossorigin="anonymous"
       defer
     ></script>
-
     <!-- jquery -->
     <script
       src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
       integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
       crossorigin="anonymous"
     ></script>
+    <title>sidebar(bootstrap)</title>
+  </head>
+  <body class="dark">
+    <div class="black-bg">
+      <div class="white-bg">
+        <h4>로그인하세요</h4>
+        <form action="success.html" id="userLogin">
+          <div class="my-3">
+            <input type="text" class="form-control" id="email" />
+          </div>
+          <div class="my-3">
+            <input type="password" class="form-control" id="pwd" />
+          </div>
+          <button type="submit" class="btn btn-primary" id="send">전송</button>
+          <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form>
+      </div>
+    </div>
 
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <span class="navbar-brand">Navbar</span>
+        <span class="badge bg-dark">Dark 🔄</span>
         <button class="navbar-toggler" type="button">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,5 +62,30 @@
       <li class="list-group-item">And a fifth one</li>
     </ul>
 
+    <div class="main-bg">
+      <h4>Shirts on Sale</h4>
+      <button class="btn btn-danger" id="login">로그인</button>
+    </div>
+
+    <div class="alert alert-danger">
+      <span id="num">5</span>초 이내 구매시 사은품 증정
+    </div>
+      <div class="slide-container">
+        <div class="slide-box" style="background-color: bisque">
+          <img src="./img/html.png" />
+        </div>
+        <div class="slide-box" style="background-color: cadetblue">
+          <img src="./img/css.png" />
+        </div>
+        <div class="slide-box" style="background-color: cornflowerblue">
+          <img src="./img/js.png" />
+        </div>
+      </div>
+    </div>
+
+    <button class="slide-img" id="slide-img1" onclick="slideImg(this)">1</button>
+    <button class="slide-img" id="slide-img2" onclick="slideImg(this)">2</button>
+    <button class="slide-img" id="slide-img3" onclick="slideImg(this)">3</button>
+    <button id="next">다음</button>
   </body>
 </html>
