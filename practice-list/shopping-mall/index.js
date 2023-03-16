@@ -4,20 +4,9 @@ function navbarToggler() {
   // document.querySelectorAll('.list-group')[0].classList.toggle('show');
   $('.list-group').toggle('show');
 }
-
-// document
-// .getElementsByClassName('navbar-toggler')[0]
-// .addEventListener('click', navbarToggler);
-
-// document
-//   .querySelector('.navbar-toggler')
-//   .addEventListener('click', navbarToggler);
-
-// document
-//   .querySelectorAll('.navbar-toggler')[0]
-//   .addEventListener('click', navbarToggler);
 $('.navbar-toggler').on('click', navbarToggler);
 
+//modal
 function openBtn() {
   $('.black-bg').addClass('show-modal');
 }
@@ -28,8 +17,14 @@ function closeBtn() {
 }
 $('#close').on('click', closeBtn);
 
-//로그인 관련
+document.querySelector('.black-bg').addEventListener('click', function (e) {
+  let modalBg = document.querySelector('.black-bg');
+  if (e.target === modalBg) {
+    modalBg.classList.remove('show-modal');
+  }
+});
 
+//Login
 function loginAlert(e) {
   let idCheck = document.getElementById('email').value;
   let pwdCheck = document.getElementById('pwd').value;
