@@ -4,20 +4,9 @@ function navbarToggler() {
   // document.querySelectorAll('.list-group')[0].classList.toggle('show');
   $('.list-group').toggle('show');
 }
-
-// document
-// .getElementsByClassName('navbar-toggler')[0]
-// .addEventListener('click', navbarToggler);
-
-// document
-//   .querySelector('.navbar-toggler')
-//   .addEventListener('click', navbarToggler);
-
-// document
-//   .querySelectorAll('.navbar-toggler')[0]
-//   .addEventListener('click', navbarToggler);
 $('.navbar-toggler').on('click', navbarToggler);
 
+//modal
 function openBtn() {
   $('.black-bg').addClass('show-modal');
 }
@@ -28,8 +17,14 @@ function closeBtn() {
 }
 $('#close').on('click', closeBtn);
 
-//로그인 관련
+document.querySelector('.black-bg').addEventListener('click', function (e) {
+  let modalBg = document.querySelector('.black-bg');
+  if (e.target === modalBg) {
+    modalBg.classList.remove('show-modal');
+  }
+});
 
+//Login
 function loginAlert(e) {
   let idCheck = document.getElementById('email').value;
   let pwdCheck = document.getElementById('pwd').value;
@@ -110,3 +105,39 @@ function nextImg() {
   }
 }
 document.getElementById('next').onclick = nextImg;
+
+// scroll
+window.addEventListener('scroll', function () {
+  if (window.scrollY >= 100) {
+    document.querySelector('.navbar-brand').style.fontSize = '50px';
+  } else {
+    document.querySelector('.navbar-brand').style.fontSize = '30px';
+  }
+});
+
+document.querySelector('.scrollBox').addEventListener('scroll', function () {
+  let intElemScrollHeight = document.querySelector('.scrollBox').scrollTop;
+  let maxElemScrollHeight = document.querySelector('.scrollBox').scrollHeight;
+  let userScrollHeight = document.querySelector('.scrollBox').clientHeight;
+
+  if (intElemScrollHeight + userScrollHeight === maxElemScrollHeight) {
+    alert('끝까지 다 내렸습니다.');
+  }
+});
+
+for (let i = 0; i < document.querySelectorAll('.tab-button').length; i++) {
+  let clickTab = document.querySelectorAll('.tab-button')[i];
+  clickTab.addEventListener('click', function () {
+    let tabOrange = document.querySelectorAll('.tab-button');
+    let tabShow = document.querySelectorAll('.tab-content');
+
+    tabOrange.forEach((el) => {
+      el.classList.remove('orange');
+      tabOrange[i].classList.add('orange');
+    });
+    tabShow.forEach((el) => {
+      el.classList.remove('show');
+      tabShow[i].classList.add('show');
+    });
+  });
+}
