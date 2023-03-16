@@ -110,3 +110,23 @@ function nextImg() {
   }
 }
 document.getElementById('next').onclick = nextImg;
+
+// scroll
+window.addEventListener('scroll', function () {
+  if (window.scrollY >= 100) {
+    document.querySelector('.navbar-brand').style.fontSize = '50px';
+  } else {
+    document.querySelector('.navbar-brand').style.fontSize = '30px';
+  }
+});
+
+document.querySelector('.scrollBox').addEventListener('scroll', function () {
+  let intElemScrollHeight = document.querySelector('.scrollBox').scrollTop;
+  let maxElemScrollHeight = document.querySelector('.scrollBox').scrollHeight;
+  let userScrollHeight = document.querySelector('.scrollBox').clientHeight;
+
+  if (intElemScrollHeight + userScrollHeight === maxElemScrollHeight) {
+    alert('끝까지 다 내렸습니다.');
+  }
+  console.log(userScrollHeight);
+});
