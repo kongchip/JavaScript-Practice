@@ -125,19 +125,37 @@ document.querySelector('.scrollBox').addEventListener('scroll', function () {
   }
 });
 
-for (let i = 0; i < document.querySelectorAll('.tab-button').length; i++) {
-  let clickTab = document.querySelectorAll('.tab-button')[i];
-  clickTab.addEventListener('click', function () {
-    let tabOrange = document.querySelectorAll('.tab-button');
-    let tabShow = document.querySelectorAll('.tab-content');
+//tab
+// for (let i = 0; i < document.querySelectorAll('.tab-button').length; i++) {
+//   let clickTab = document.querySelectorAll('.tab-button')[i];
+//   clickTab.addEventListener('click', function () {
+//     let tabOrange = document.querySelectorAll('.tab-button');
+//     let tabShow = document.querySelectorAll('.tab-content');
 
-    tabOrange.forEach((el) => {
-      el.classList.remove('orange');
-      tabOrange[i].classList.add('orange');
-    });
-    tabShow.forEach((el) => {
-      el.classList.remove('show');
-      tabShow[i].classList.add('show');
-    });
-  });
+//     tabOrange.forEach((el) => {
+//       el.classList.remove('orange');
+//       tabOrange[i].classList.add('orange');
+//     });
+//     tabShow.forEach((el) => {
+//       el.classList.remove('show');
+//       tabShow[i].classList.add('show');
+//     });
+//   });
+// }
+let tabButton = document.querySelectorAll('.tab-button');
+$('.tabList').click(function (e) {
+  if (e.target === tabButton[0]) {
+    tabHandler(0);
+  } else if (e.target === tabButton[1]) {
+    tabHandler(1);
+  } else if (e.target === tabButton[2]) {
+    tabHandler(2);
+  }
+});
+
+function tabHandler(num) {
+  $('.tab-button').removeClass('orange');
+  $('.tab-button').eq(num).addClass('orange');
+  $('.tab-content').removeClass('show');
+  $('.tab-content').eq(num).addClass('show');
 }
