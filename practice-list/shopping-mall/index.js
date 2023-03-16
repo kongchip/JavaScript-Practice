@@ -144,13 +144,7 @@ document.querySelector('.scrollBox').addEventListener('scroll', function () {
 // }
 let tabButton = document.querySelectorAll('.tab-button');
 $('.tabList').click(function (e) {
-  if (e.target === tabButton[0]) {
-    tabHandler(0);
-  } else if (e.target === tabButton[1]) {
-    tabHandler(1);
-  } else if (e.target === tabButton[2]) {
-    tabHandler(2);
-  }
+  tabHandler(e.target.dataset.id);
 });
 
 function tabHandler(num) {
