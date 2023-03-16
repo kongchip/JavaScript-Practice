@@ -128,5 +128,21 @@ document.querySelector('.scrollBox').addEventListener('scroll', function () {
   if (intElemScrollHeight + userScrollHeight === maxElemScrollHeight) {
     alert('끝까지 다 내렸습니다.');
   }
-  console.log(userScrollHeight);
 });
+
+for (let i = 0; i < document.querySelectorAll('.tab-button').length; i++) {
+  let clickTab = document.querySelectorAll('.tab-button')[i];
+  clickTab.addEventListener('click', function () {
+    let tabOrange = document.querySelectorAll('.tab-button');
+    let tabShow = document.querySelectorAll('.tab-content');
+
+    tabOrange.forEach((el) => {
+      el.classList.remove('orange');
+      tabOrange[i].classList.add('orange');
+    });
+    tabShow.forEach((el) => {
+      el.classList.remove('show');
+      tabShow[i].classList.add('show');
+    });
+  });
+}
