@@ -26,3 +26,10 @@ function tabHandler(num) {
   $('.tab-content').removeClass('show');
   $('.tab-content').eq(num).addClass('show');
 }
+
+let car = {
+  name: '소나타',
+  price: 50000,
+};
+document.querySelector('.car-title').innerHTML = car.name;
+document.querySelector('.car-price').innerHTML = car.price;
