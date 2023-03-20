@@ -5,13 +5,47 @@ const products = [
 ];
 
 // itemInfo
-let itemName = document.querySelectorAll('.card-body h5');
-let itemPrice = document.querySelectorAll('.card-body p');
-itemName[0].innerHTML = products[0].title;
-itemPrice[0].innerHTML = `가격 : ${products[0].price}`;
+products.forEach((data) => {
+  let productItem = `<div class="col-sm-4">
+<img src="https://via.placeholder.com/600" class="w-100" />
+<h5>${data.title}</h5>
+<p>가격 : ${data.price}</p>
+</div>`;
+  $('.row').append(productItem);
+});
 
-itemName[1].innerHTML = products[1].title;
-itemPrice[1].innerHTML = `가격 : ${products[1].price}`;
-
-itemName[2].innerHTML = products[2].title;
-itemPrice[2].innerHTML = `가격 : ${products[2].price}`;
+//more products
+let count = 0;
+document.getElementById('more').addEventListener('click', function () {
+  if (count === 0) {
+    fetch('https://codingapple1.github.io/js/more1.json')
+      .then((res) => res.json())
+      .then(function (data) {
+        data.forEach((a, i) => {
+          let productItem = `<div class="col-sm-4">
+        <img src="https://via.placeholder.com/600" class="w-100" />
+        <h5>${data[i].title}</h5>
+        <p>가격 : ${data[i].price}</p>
+      </div>`;
+          $('.row').append(productItem);
+        });
+      });
+    count++;
+  } else if (count === 1) {
+    fetch('https://codingapple1.github.io/js/more2.json')
+      .then((res) => res.json())
+      .then(function (data) {
+        data.forEach((a, i) => {
+          let productItem = `<div class="col-sm-4">
+        <img src="https://via.placeholder.com/600" class="w-100" />
+        <h5>${data[i].title}</h5>
+        <p>가격 : ${data[i].price}</p>
+      </div>`;
+          $('.row').append(productItem);
+        });
+      });
+    document.getElementById('more').disabled = true;
+    document.getElementById('more').style.backgroundColor = '#CCCCCC';
+    document.getElementById('more').style.borderColor = '#CCCCCC';
+  }
+});
