@@ -7,7 +7,7 @@ const products = [
 function itemInfo(data) {
   let productItem = `<div class="col-sm-4">
 <img src="https://via.placeholder.com/600" class="w-100" />
-<h5>${data.title}</h5>
+<h5>상품명 : ${data.title}</h5>
 <p>가격 : ${data.price}</p>
 <button class="buy">구매</button>
 </div>`;
@@ -17,19 +17,32 @@ products.forEach(itemInfo);
 
 //buy
 $('.buy').click(function (e) {
-  let title = $(e.target).siblings('h5').text();
-  if (
-    localStorage.getItem('cart') != null &&
-    JSON.parse(localStorage.cart)[0] !== title &&
-    JSON.parse(localStorage.cart)[1] !== title &&
-    JSON.parse(localStorage.cart)[2] !== title
+  let productTitle = $(e.target).siblings('h5').text();
+  let productPrice = $(e.target).siblings('p').text();
+
+  if (localStorage.getItem('cart') === null) {
+    localStorage.setItem(
+      'cart',
+      JSON.stringify([{ productTitle, productPrice }])
+    );
+  } else if (JSON.parse(localStorage.cart).length < 1) {
+    let inCart = JSON.parse(localStorage.cart);
+    inCart.push({ productTitle, productPrice });
+    localStorage.setItem('cart', JSON.stringify(inCart));
+  } else if (
+    JSON.parse(localStorage.cart).length < 2 &&
+    JSON.parse(localStorage.cart)[0].productTitle !== productTitle
   ) {
     let inCart = JSON.parse(localStorage.cart);
-    inCart.push(title);
+    inCart.push({ productTitle, productPrice });
     localStorage.setItem('cart', JSON.stringify(inCart));
-    console.log(inCart);
-  } else {
-    localStorage.setItem('cart', JSON.stringify([title]));
+  } else if (
+    JSON.parse(localStorage.cart).length < 3 &&
+    JSON.parse(localStorage.cart)[1].productTitle !== productTitle
+  ) {
+    let inCart = JSON.parse(localStorage.cart);
+    inCart.push({ productTitle, productPrice });
+    localStorage.setItem('cart', JSON.stringify(inCart));
   }
 });
 
