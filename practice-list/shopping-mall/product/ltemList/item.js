@@ -9,10 +9,29 @@ function itemInfo(data) {
 <img src="https://via.placeholder.com/600" class="w-100" />
 <h5>${data.title}</h5>
 <p>가격 : ${data.price}</p>
+<button class="buy">구매</button>
 </div>`;
   $('.row').append(productItem);
 }
 products.forEach(itemInfo);
+
+//buy
+$('.buy').click(function (e) {
+  let title = $(e.target).siblings('h5').text();
+  if (
+    localStorage.getItem('cart') != null &&
+    JSON.parse(localStorage.cart)[0] !== title &&
+    JSON.parse(localStorage.cart)[1] !== title &&
+    JSON.parse(localStorage.cart)[2] !== title
+  ) {
+    let inCart = JSON.parse(localStorage.cart);
+    inCart.push(title);
+    localStorage.setItem('cart', JSON.stringify(inCart));
+    console.log(inCart);
+  } else {
+    localStorage.setItem('cart', JSON.stringify([title]));
+  }
+});
 
 // sort
 function itemSort(e) {
