@@ -1,3 +1,7 @@
+.form-hide {
+  display: none;
+}
+
 ul.tabList {
   list-style-type: none;
   margin: 0;
