@@ -4,15 +4,35 @@ const products = [
   { id: 2, price: 60000, title: 'Black Monastery' },
 ];
 
-// itemInfo
-products.forEach((data) => {
+function itemInfo(data) {
   let productItem = `<div class="col-sm-4">
 <img src="https://via.placeholder.com/600" class="w-100" />
 <h5>${data.title}</h5>
 <p>가격 : ${data.price}</p>
 </div>`;
   $('.row').append(productItem);
-});
+}
+products.forEach(itemInfo);
+
+// sort
+function itemSort(e) {
+  console.log(e.target.id);
+  if (e.target.id === 'price') {
+    products.sort((a, b) => {
+      return a.price - b.price;
+    });
+  } else if (e.target.id === 'consonant') {
+    products.sort((a, b) => {
+      if (a.title < b.title) {
+        return 1;
+      } else return -1;
+    });
+    console.log(products);
+  }
+  $('.row').html('');
+  products.forEach(itemInfo);
+}
+$('.sort').click(itemSort);
 
 //more products
 let count = 0;
@@ -21,28 +41,14 @@ document.getElementById('more').addEventListener('click', function () {
     fetch('https://codingapple1.github.io/js/more1.json')
       .then((res) => res.json())
       .then(function (data) {
-        data.forEach((a, i) => {
-          let productItem = `<div class="col-sm-4">
-        <img src="https://via.placeholder.com/600" class="w-100" />
-        <h5>${data[i].title}</h5>
-        <p>가격 : ${data[i].price}</p>
-      </div>`;
-          $('.row').append(productItem);
-        });
+        data.forEach(itemInfo);
       });
     count++;
   } else if (count === 1) {
     fetch('https://codingapple1.github.io/js/more2.json')
       .then((res) => res.json())
       .then(function (data) {
-        data.forEach((a, i) => {
-          let productItem = `<div class="col-sm-4">
-        <img src="https://via.placeholder.com/600" class="w-100" />
-        <h5>${data[i].title}</h5>
-        <p>가격 : ${data[i].price}</p>
-      </div>`;
-          $('.row').append(productItem);
-        });
+        data.forEach(itemInfo);
       });
     document.getElementById('more').disabled = true;
     document.getElementById('more').style.backgroundColor = '#CCCCCC';
