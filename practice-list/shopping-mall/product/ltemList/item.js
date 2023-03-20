@@ -27,12 +27,18 @@ function itemSort(e) {
         return 1;
       } else return -1;
     });
-    console.log(products);
   }
   $('.row').html('');
   products.forEach(itemInfo);
 }
 $('.sort').click(itemSort);
+
+//filter
+$('#filter').click(function () {
+  let newProduct = products.filter((a) => a.price <= 60000);
+  $('.row').html('');
+  newProduct.forEach(itemInfo);
+});
 
 //more products
 let count = 0;
