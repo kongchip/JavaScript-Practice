@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+      integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .item {
+        background-color: aqua;
+        border: 1px solid black;
+        margin-bottom: 10px;
+        width: 200px;
+      }
+    </style>
+    <title>cart</title>
+  </head>
+  <body>
+    <div>장바구니 페이지</div>
+    <div class="showItem"></div>
+
+    <script>
+      let inCart = JSON.parse(localStorage.cart);
+      function itemList(data) {
+        let itemList = `<div class="item">
+        <h5>${data.productTitle}</h5>
+        <p>${data.productPrice}</p>
+        </div>`;
+        $('.showItem').append(itemList);
+      }
+      inCart.forEach(itemList);
+      // let qqq = `<h3>상품 이름 : ${inCart.productTitle}</h3>
+      // <h3>상품 가격 : ${inCart[0]}</h3>`;
+      // document.querySelector('.showItem').innerHTML = qqq;
+    </script>
+  </body>
+</html>
